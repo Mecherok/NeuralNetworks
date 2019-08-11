@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 
 namespace NeuralNetworks {
-    class Neuron {
-        public List<double> Weights { get; } 
+    public class Neuron {
+        public List<double> Weights { get; }
         public NeuronType NeuronType { get; }
         public double Output { get; private set; }
 
@@ -31,6 +31,12 @@ namespace NeuralNetworks {
             return result;
         }
 
+        public void SetWeights(params double[] weights) {
+            for (int i = 0; i < weights.Length; i++) {
+                Weights[i] = weights[i];
+            }
+        }
+        
         public override string ToString() {
             return Output.ToString();
         }
