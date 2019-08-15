@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 namespace NeuralNetworks {
     public class Layer {
         public List<Neuron> Neurons { get; }
-        public int Count => Neurons?.Count ?? 0;
+        public int NeuronCount => Neurons?.Count ?? 0;
+        public NeuronType Type;
 
         public Layer(List<Neuron> neurons, NeuronType type = NeuronType.Normal) {
             // проверить входные данные
             Neurons = neurons;
+            Type = type;
         }
 
         public List<double> GetSignals() {
@@ -20,6 +22,10 @@ namespace NeuralNetworks {
                 result.Add(neuron.Output);
             }
             return result;
+        }
+
+        public override string ToString() {
+            return Type.ToString();
         }
     }
 }
